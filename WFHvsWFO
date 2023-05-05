@@ -1,0 +1,126 @@
+/*ID - Unique Identifier for each record
+Name - Names of people (Real names has been modifed)
+Age- The ages of the people who took the survey
+Occupation - The type of work of the people who took the survey
+Gender- The gender of the people who took the survey
+Same_ofiice_home_location - Answers the question :Do you reside in the base location as your office? --> yes or no
+kids - if they have kids or not. --> yes or no
+RM_save_money - Answers the question :Do you feel you were able to save money with remote work? --> yes or no
+RM_quality_time - Answers the question : Do you feel that remote work has given you more quality time with family/friends? --> yes or no
+RM_better_sleep - Answers the question : Has your sleep cycle improved with work from home? --> yes or no
+calmer_stressed - Answers the question : Are you calmer or more stressed than usual since remote work began?
+RM_professional_growth - Answers the question :On a scale of 1-5, Do you feel WFH has affected your professional growth adversely?(5-yes it's affecting me badly,1 No it doesn't affect me)
+RM_lazy - Answers the question : On a scale of 1-5,do you feel WFH has made you lazy?(5-extremely lazy,1-Nope, not lazy at all)
+RM_productive - Answers the question : On a scale of 1-5, are you more productive with working remotely?(1-not productive at all,5-extremely productive)
+digital_connect_sufficient - Answers the question : Do you feel digital connect is sufficient?
+RM_better_work_life_balance - Answers the question : On a scale of 1-5,do you feel you have a better work-life balance with remote work?(1-No not at all,5-Yessssssss)
+RM_improved_skillset - Answers the question : On a scale of 1-5,how much has your skillset improved in the last two years?(skillset with respect to your work domain,1:Not improved,5:Improved drastically)
+RM_job_opportunities - Answers the question : Do you think there are more job opportunities with remote work?
+Target- Answers the question : In the future which of the following do you think is more suited for you?(Sorry, but hybrid isn't an option here)
+*/
+
+CREATE TABLE wfh_wfo_survey (
+    ID TEXT PRIMARY KEY,
+    Name TEXT,
+    Age INTEGER,
+    Occupation TEXT,
+    Gender TEXT,
+    Same_office_home_location TEXT,
+    kids TEXT,
+    RM_save_money TEXT,
+    RM_quality_time TEXT,
+    RM_better_sleep TEXT,
+    calmer_stressed TEXT,
+    RM_professional_growth INTEGER,
+    RM_lazy INTEGER,
+    RM_productive INTEGER,
+    digital_connect_sufficient TEXT,
+    RM_better_work_life_balance INTEGER,
+    RM_improved_skillset INTEGER,
+    RM_job_opportunities TEXT,
+    Target INTEGER 
+    );
+    
+INSERT INTO wfh_wfo_survey VALUES (1,"Bhavana",45,"Tutor","Female","Yes","Yes","Yes","Yes","Yes","CALMER",5,1,5,"Yes",5,5,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (2,"Banditaa",53,"HR","Female","Yes","Yes","Yes","Yes","Yes","CALMER",3,3,4,"No",5,3,"No",1);
+INSERT INTO wfh_wfo_survey VALUES (3,"Neetha",26,"Engineer","Female","Yes","No","Yes","Yes","No","STRESSED",3,4,4,"No",4,5,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (4,"Ram",26,"Recruiter","Male","Yes","No","No","Yes","No","STRESSED",3,3,5,"Yes",4,2,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (5,"Gaurav",27,"Recruiter","Male","No","No","Yes","Yes","Yes","CALMER",3,3,3,"No",3,5,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (6,"Sandy",24,"Engineer","Male","Yes","No","No","No","No","CALMER",3,4,2,"No",2,3,"Not sure",1);
+INSERT INTO wfh_wfo_survey VALUES (7,"Gina" ,36,"Engineer","Female","No","No","No","Yes","No","STRESSED",3,4,3,"No",3,4,"Not sure",1);
+INSERT INTO wfh_wfo_survey VALUES (8,"Ray",26,"Engineer","Male","No","No","Yes","Yes","Yes","STRESSED",2,4,3,"No",2,4,"Not sure",0);
+INSERT INTO wfh_wfo_survey VALUES (9,"Ganika",26,"Recruiter","Female","No","No","Yes","Yes","Yes","CALMER",3,2,4,"No",4,3,"Not sure",1);
+INSERT INTO wfh_wfo_survey VALUES (10,"Sheetal",27,"Engineer","Female","Yes","No","Yes","Yes","No","STRESSED",4,4,4,"No",4,4,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (11,"Abbas",25,"Engineer","Male","No","No","Yes","Yes","Yes","CALMER",4,3,4,"No",3,4,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (12,"Ishanvi" ,26,"Business","Female","No","No","Yes","Yes","Yes","CALMER",1,2,3,"Yes",5,3,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (13,"Ira",25,"Business","Female","No","No","Yes","No","No","STRESSED",4,4,3,"No",3,3,"Not sure",0);
+INSERT INTO wfh_wfo_survey VALUES (14,"Sameera" ,25,"Business","Female","Yes","No","Yes","Yes","No","STRESSED",4,4,4,"No",4,4,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (15,"Ryan",28,"Engineer","Male","No","No","No","No","Yes","STRESSED",3,3,4,"No",3,3,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (16,"Shahid",25,"Recruiter","Male","No","No","Yes","Yes","Yes","CALMER",4,3,2,"No",3,3,"Not sure",0);
+INSERT INTO wfh_wfo_survey VALUES (17,"Aadvik" ,24,"Business","Male","No","No","No","Yes","No","STRESSED",1,5,2,"No",3,5,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (18,"Priya",44,"Tutor","Female","No","Yes","No","No","No","STRESSED",4,1,3,"No",4,3,"No",0);
+INSERT INTO wfh_wfo_survey VALUES (19,"Alok",25,"Marketing" ,"Male","Yes","No","Yes","No","No","STRESSED",4,3,4,"Yes",2,5,"Yes",1);
+INSERT INTO wfh_wfo_survey VALUES (20,"Ashvik" ,44,"Marketing" ,"Male","Yes","Yes","No","Yes","No","STRESSED",2,1,3,"No",3,2,"No",0);
+INSERT INTO wfh_wfo_survey VALUES (21,"Kiara",29,"Engineer","Female","Yes","No","Yes","Yes","Yes","STRESSED",5,5,1,"No",1,2,"Not sure",0);
+INSERT INTO wfh_wfo_survey VALUES (22,"Sangeetha",41,"Tutor","Female","No","Yes","Yes","Yes","Yes","STRESSED",3,2,4,"Yes",3,4,"No",0);
+INSERT INTO wfh_wfo_survey VALUES (23,"Kabir" ,28,"Manager","Male","Yes","No","No","No","No","STRESSED",2,4,3,"No",2,5,"Not sure",0);
+INSERT INTO wfh_wfo_survey VALUES (24,"Pari",21,"Recruiter","Male","No","No","Yes","Yes","Yes","CALMER",3,3,4,"Yes",4,4,"No",1);
+INSERT INTO wfh_wfo_survey VALUES (25,"Anu",42,"Tutor","Female","Yes","Yes","Yes","Yes","No","STRESSED",1,1,5,"Yes",4,5,"Yes",0);
+INSERT INTO wfh_wfo_survey VALUES (26,"Sujitha",32,"Engineer","Female","Yes","Yes","Yes","Yes","Yes","CALMER",4,1,5,"Yes",3,3,"Not sure",1);
+
+/*How many people prefer WFH compared to WFO*/
+SELECT target FROM wfh_wfo_survey WHERE target =1;
+
+/*How many of the WFH people are female under 30*/
+SELECT target, age FROM wfh_wfo_survey 
+    WHERE target = 1
+        AND gender = "Female"
+        AND age < 30;
+        
+/*How many of the WFH people are female over 35*/
+SELECT target, age FROM wfh_wfo_survey 
+    WHERE target = 1
+        AND gender = "Female"
+        AND age > 35;
+        
+/* How many people prefer WFO*/
+SELECT target FROM wfh_wfo_survey WHERE target =0;
+
+/*How many of the WFO people are female under 30*/
+SELECT target, age FROM wfh_wfo_survey 
+    WHERE target = 0
+        AND gender = "Female"
+        AND age < 30;
+        
+/*How many of the WFH people are female over 35*/
+SELECT target, age FROM wfh_wfo_survey 
+    WHERE Target = 0
+        AND Gender = "Female"
+        AND Age > 35;
+        
+/*How many of the WFH people are male*/
+SELECT target, gender FROM wfh_wfo_survey
+    WHERE target = 1
+        AND gender = "Male";
+        
+/*How many of the WFO people are male*/
+SELECT target, gender FROM wfh_wfo_survey
+    WHERE target = 0
+        AND gender = "Male";
+        
+/*How many people believe their quality family time improved with WFH*/
+SELECT name, target, age, RM_quality_time  FROM wfh_wfo_survey
+        WHERE target = 1
+        AND RM_quality_time = "Yes";
+        
+/*How many people chose WFO but also believe it improved their work/life balance*/
+SELECT name, age, RM_better_work_life_balance FROM wfh_wfo_survey
+        WHERE target = 0
+        AND RM_better_work_life_balance = "Yes";
+        
+/*How many people are more calm since starting to WFH*/
+SELECT name, age, calmer_stressed, gender FROM wfh_wfo_survey 
+        WHERE calmer_stressed = "CALMER";
+/*How many people are more stressed since starting to WFH*/
+SELECT name, age, calmer_stressed, gender FROM wfh_wfo_survey 
+        WHERE calmer_stressed = "STRESSED";       

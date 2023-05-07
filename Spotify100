@@ -1,0 +1,29 @@
+CREATE TABLE top_spotify (
+id VARCHAR(21),
+name TEXT,
+artists TEXT,
+danceability DECIMAL,
+energy DECIMAL,
+key DECIMAL,
+loudness DECIMAL,
+mode DECIMAL,
+speechiness DECIMAL,
+acousticness DECIMAL,
+instrumentalness DECIMAL,
+liveness DECIMAL,
+valence DECIMAL,
+tempo DECIMAL,
+duration_ms DECIMAL,
+time_signature DECIMAL
+ );
+
+ INSERT INTO top_spotify (id,name,artists,danceability,energy,key,loudness,
+    mode,speechiness,acousticness,instrumentalness,
+    liveness,valence,tempo,duration_ms,time_signature)
+        VALUES ("6DCZcSspjsKoFjzjrWoCd","Gods Plan,Drake",0.754,0.449,7.0,-9.211,1.0,0.109,0.0332,8.29e-05,0.552,0.357,77.169,198973.0,4.0
+);
+INSERT INTO top_spotify (id,name,artists,danceability,energy,key,loudness,
+    mode,speechiness,acousticness,instrumentalness,
+    liveness,valence,tempo,duration_ms,time_signature)
+        VALUES ("3ee8Jmje8o58CHK66QrVC","SAD!","XXXTENTACION",0.74,0.613,8.0,-4.88,1.0,0.145,0.258,0.00372,0.123,0.473,75.023,166606.0,4.0
+);

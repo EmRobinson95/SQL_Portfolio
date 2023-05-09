@@ -1,0 +1,459 @@
+CREATE TABLE Employee_Demographics (
+    EmployeeID int,
+    FirstName varchar(50),
+    LastName varchar(50),
+    Age int,
+    Gender varchar(50)
+); 
+
+ CREATE TABLE Employee_Salary (
+    EmployeeID int,
+    JobTitle varchar(50),
+    Salary int
+); 
+
+ INSERT INTO Employee_Demographics VALUES 
+    (1001, 'Jim', 'Halpert', 30, 'Male'),
+    (1002, 'Pam', 'Beasley', 30, 'Female'),
+    (1003, 'Dwight', 'Shrute', 29, 'Male'),
+    (1004, 'Angela', 'Martin', 31, 'Female'),
+    (1005, 'Toby', 'Flenderson', 32, 'Male'),
+    (1006, 'Michael', 'Scott', 35, 'Male'),
+    (1007, 'Meredith', 'Palmer', 32, 'Female'),
+    (1008, 'Stanley', 'Hudson', 38, 'Male'),
+    (1009, 'Kevin', 'Malone', 31, 'Male'),
+    (1011, 'Ryan', 'Howard', 26, 'Male'),
+    (NULL, 'Holly', 'Flax', NULL, NULL),
+    (1013, 'Darryl', 'Philbin',NULL, 'Male')
+
+ INSERT INTO Employee_Salary VALUES 
+    (1001, 'Salesman', 45000),
+    (1002, 'Receptionist', 36000),
+    (1003, 'Salesman', 63000),
+    (1004, 'Accountant', 47000),
+    (1005, 'HR', 50000),
+    (1006, 'Regional Manager', 65000),
+    (1007, 'Supplier Relations', 41000),
+    (1008, 'Salesman', 48000),
+    (1009, 'Accountant', 42000),
+    (1010, NULL,47000),
+    (NULL, 'Salesman', 43000)
+
+
+SELECT DISTINCT(EmployeeID) 
+FROM Employee_Demographics
+
+
+SELECT COUNT(LastName) AS LastNameCount
+FROM Employee_Demographics
+
+
+SELECT MAX(Salary) 
+FROM Employee_Salary
+
+
+SELECT MIN(Salary) 
+FROM Employee_Salary
+
+
+SELECT AVG(Salary) 
+FROM Employee_Salary
+
+
+SELECT * 
+FROM master.dbo.Employee_Salary
+
+
+SELECT * 
+FROM Employee_Demographics
+WHERE FirstName = 'Jim'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE FirstName <> 'Jim'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE Age > 30
+
+SELECT * 
+FROM Employee_Demographics
+WHERE Age < 32
+
+SELECT * 
+FROM Employee_Demographics
+WHERE Age <= 32 AND Gender = 'Male'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE Age <= 32 OR Gender = 'Male'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE LastName LIKE '%S%'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE LastName LIKE '%S%ott%'
+
+SELECT * 
+FROM Employee_Demographics
+WHERE FirstName is NULL
+
+SELECT * 
+FROM Employee_Demographics
+WHERE FirstName IN ('Jim', 'Michael')
+
+SELECT Gender, Age, COUNT(Gender) AS GenderCount
+FROM Employee_Demographics
+GROUP BY Gender, Age
+
+SELECT Gender, Age, COUNT(Gender) AS GenderCount
+FROM Employee_Demographics
+WHERE Age > 31
+GROUP BY Gender, Age
+
+SELECT Gender,  COUNT(Gender) AS GenderCount
+FROM Employee_Demographics
+WHERE Age > 31
+GROUP BY Gender
+ORDER BY GenderCount DESC
+
+SELECT * 
+FROM Employee_Demographics
+ORDER BY Age ASC, Gender DESC 
+
+SELECT * 
+FROM Employee_Demographics
+ORDER BY 4 ASC, Gender DESC 
+
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+
+SELECT *
+FROM master.dbo.Employee_Salary
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+INNER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+FULL OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+    
+SELECT *
+FROM master.dbo.Employee_Demographics
+LEFT OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+RIGHT OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT Employee_Demographics.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM master.dbo.Employee_Demographics
+INNER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT Employee_Salary.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM master.dbo.Employee_Demographics
+RIGHT OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT Employee_Demographics.EmployeeID, FirstName, LastName, JobTitle, Salary
+FROM master.dbo.Employee_Demographics
+LEFT OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+SELECT Employee_Demographics.EmployeeID, FirstName, LastName, Salary
+FROM master.dbo.Employee_Demographics
+FULL OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+WHERE FirstName <> 'Michael'
+ORDER BY Salary DESC 
+
+SELECT JobTitle, AVG(Salary)
+FROM master.dbo.Employee_Demographics
+FULL OUTER JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+WHERE JobTitle = 'Salesman'
+GROUP BY JobTitle
+
+
+CREATE TABLE WareHouseEmployeeDemographics (
+    EmployeeID int,
+    FirstName varchar(50),
+    LastName varchar(50),
+    Age int,
+    Gender varchar(50)
+);
+
+ INSERT INTO Employee_Demographics VALUES 
+    (1050, 'Roy', 'Anderson', 31, 'Male'),
+    (1051, 'Hidetoshi', 'Hasagawa', 40, 'Male'),
+    (1052, 'Val', 'Johnson', 31, 'Female')
+
+
+DELETE FROM Employee_Demographics 
+    WHERE EmployeeID = 1050;
+
+DELETE FROM Employee_Demographics 
+    WHERE EmployeeID = 1051;
+DELETE FROM Employee_Demographics 
+    WHERE EmployeeID = 1052;
+
+
+ INSERT INTO WareHouseEmployeeDemographics VALUES 
+    (1050, 'Roy', 'Anderson', 31, 'Male'),
+    (1051, 'Hidetoshi', 'Hasagawa', 40, 'Male'),
+    (1052, 'Val', 'Johnson', 31, 'Female')
+
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+FULL OUTER JOIN master.dbo.WareHouseEmployeeDemographics
+    ON Employee_Demographics.EmployeeID = WareHouseEmployeeDemographics.EmployeeID 
+
+
+SELECT *
+FROM master.dbo.Employee_Demographics
+UNION ALL
+SELECT *
+FROM master.dbo.WareHouseEmployeeDemographics
+ORDER BY EmployeeID
+
+
+SELECT EmployeeID, FirstName, Age
+FROM master.dbo.Employee_Demographics
+UNION
+SELECT EmployeeID, JobTitle, Salary
+FROM master.dbo.Employee_Salary
+ORDER BY EmployeeID
+
+
+SELECT FirstName, LastName, Age,
+CASE
+    WHEN Age > 30 THEN 'Old'
+    WHEN Age BETWEEN 27 AND 30 THEN 'Young'
+    ELSE 'Baby'
+END
+FROM master.dbo.Employee_Demographics
+WHERE Age is NOT NULL
+ORDER BY Age
+
+
+SELECT FirstName, LastName, JobTitle, Salary,
+CASE 
+    WHEN JobTitle = 'Salesman' THEN Salary + (Salary * .10)
+    WHEN JobTitle = 'Accountant' THEN Salary + (Salary * .05)
+    WHEN JobTitle = 'HR' THEN Salary + (Salary * .000001)
+    ELSE Salary +(Salary * .03)
+END AS SalaryAfterRaise
+FROM master.dbo.Employee_Demographics
+JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+
+
+SELECT JobTitle, COUNT(JobTitle)
+FROM master.dbo.Employee_Demographics
+JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+GROUP BY JobTitle
+HAVING COUNT(JobTitle) > 1
+
+SELECT JobTitle, AVG(Salary)
+FROM master.dbo.Employee_Demographics
+JOIN master.dbo.Employee_Salary
+    ON Employee_Demographics.EmployeeID = Employee_Salary.EmployeeID
+GROUP BY JobTitle
+HAVING AVG(Salary) > 45000
+ORDER BY AVG(Salary)
+
+
+UPDATE master.dbo.Employee_Demographics
+SET Age = 31, Gender = 'Female'
+WHERE FirstName = 'Holly' AND LastName = 'Flax'
+
+
+DELETE FROM master.dbo.Employee_Demographics 
+WHERE EmployeeID = 1005
+
+
+SELECT FirstName + ' ' + LastName AS FullName
+FROM [master].[dbo].[Employee_Demographics]
+
+
+SELECT AVG(Age) AS AvgAge
+FROM [master].[dbo].[Employee_Demographics]
+
+
+SELECT Demo.EmployeeID, Sal.Salary
+FROM [master].[dbo].[Employee_Demographics] AS Demo
+JOIN [master].[dbo].[Employee_Salary] AS Sal
+    ON Demo.EmployeeID = Sal.EmployeeID
+
+SELECT Demo.EmployeeID, Demo.FirstName, Demo.LastName, Sal.JobTitle, Ware.Age
+FROM [master].[dbo].[Employee_Demographics] Demo
+LEFT JOIN [master].[dbo].[Employee_Salary] Sal
+    ON Demo.EmployeeID = Sal.EmployeeID
+LEFT JOIN [master].[dbo].[WareHouseEmployeeDemographics] Ware
+    ON Demo.EmployeeID = Ware.EmployeeID
+
+
+SELECT FirstName, LastName, Gender, Salary,
+    COUNT(Gender) OVER (PARTITION BY Gender) AS TotalGender
+FROM master.dbo.Employee_Demographics dem
+JOIN  master.dbo.Employee_Salary sal
+    ON dem.EmployeeID = sal.EmployeeID
+
+WITH CTE_Employee as 
+(SELECT FirstName, LastName, Gender, Salary,
+    COUNT(Gender) OVER (PARTITION BY Gender) AS TotalGender
+FROM master.dbo.Employee_Demographics dem
+JOIN  master.dbo.Employee_Salary sal
+    ON dem.EmployeeID = sal.EmployeeID
+    WHERE Salary > '45000'
+)
+SELECT FirstName 
+FROM CTE_Employee
+
+
+CREATE TABLE #temp_Employee (
+    EmployeeID int,
+    JobTitle VARCHAR(100),
+    Salary int
+)
+
+INSERT INTO #temp_Employee VALUES (
+    '1001', 'HR', '45000'
+)
+
+SELECT *
+FROM #temp_Employee
+
+INSERT INTO #temp_Employee 
+SELECT *
+FROM master.dbo.Employee_Salary
+
+DROP TABLE IF EXISTS #temp_Employee2
+CREATE TABLE #temp_Employee2 (
+    JobTitle VARCHAR(50),
+    EmployeesPerJob int,
+    AvgAge int,
+    AvgSalary int
+)
+
+INSERT INTO #temp_Employee2
+SELECT JobTitle, COUNT(JobTitle), AVG(Age), AVG(Salary)
+FROM master.dbo.Employee_Demographics emp
+JOIN master.dbo.Employee_Salary sal  
+    ON emp.EmployeeID = sal.EmployeeID
+GROUP BY JobTitle
+
+
+CREATE TABLE EmployeeErrors (
+    EmployeeID VARCHAR(50),
+    FirstName VARCHAR(50),
+    LastName VARCHAR(50),
+)
+
+INSERT INTO EmployeeErrors VALUES
+    ('1001  ', 'Jimbo', 'Halbert'),
+    ('  1002', 'Pamela', 'Beasely'),
+    ('1005', 'TOby', 'Flenderson - Fired')
+
+
+SELECT *
+FROM EmployeeErrors
+
+SELECT EmployeeID, TRIM(EmployeeID) AS IDTRIM
+FROM EmployeeErrors
+
+SELECT EmployeeID, LTRIM(EmployeeID) AS IDTRIM
+FROM EmployeeErrors
+
+SELECT EmployeeID, RTRIM(EmployeeID) AS IDTRIM
+FROM EmployeeErrors
+
+
+SELECT LastName, REPLACE(LastName, '- Fired', '') AS LastNameFixed
+FROM EmployeeErrors
+
+SELECT SUBSTRING(FirstName, 1, 3)
+FROM EmployeeErrors
+
+SELECT SUBSTRING(er.FirstName, 1, 3), SUBSTRING(dem.FirstName, 1, 3)
+FROM EmployeeErrors er 
+JOIN Employee_Demographics dem 
+    ON SUBSTRING(er.FirstName, 1, 3) = SUBSTRING(dem.FirstName, 1, 3)
+
+SELECT FirstName, Lower(FirstName)
+FROM EmployeeErrors
+SELECT FirstName, UPPER(FirstName)
+FROM EmployeeErrors
+
+
+CREATE PROCEDURE TEST 
+AS
+SELECT * 
+FROM Employee_Demographics
+
+EXEC TEST
+
+
+CREATE PROCEDURE Temp_Employee
+AS
+CREATE TABLE #temp_Employee (
+    JobTitle VARCHAR(100),
+    EmployeesPerJob int,
+    AvgAge int,
+    AvgSalary int
+)
+
+ALTER PROCEDURE[dbo].[Temp_Employee]
+@JobTitle nvarchar(100)
+AS
+CREATE TABLE #Temp_Employee (
+    JobTitle VARCHAR(100),
+    EmployeesPerJob int,
+    AvgAge int,
+    AvgSalary int
+)
+INSERT INTO #Temp_Employee
+SELECT JobTitle, COUNT(JobTitle), AVG(Age), AVG(Salary)
+FROM master.dbo.Employee_Demographics emp
+JOIN master.dbo.Employee_Salary sal  
+    ON emp.EmployeeID = sal.EmployeeID
+WHERE JobTitle = @JobTitle
+GROUP BY JobTitle
+
+EXEC Temp_Employee @JobTitle = 'Salesman'
+
+SELECT *
+FROM Employee_Salary 
+
+SELECT EmployeeID, Salary, (SELECT AVG(Salary) FROM Employee_Salary) AS AllAvgSalary
+FROM Employee_Salary
+
+SELECT EmployeeID, Salary, AVG(Salary) over( ) AS AllAvgSalary
+FROM Employee_Salary
+
+SELECT EmployeeID, Salary, AVG(Salary) over( ) AS AllAvgSalary
+FROM Employee_Salary
+GROUP BY EmployeeID, Salary
+ORDER BY 1, 2
+
+SELECT a.EmployeeID, AllAvgSalary
+FROM (SELECT EmployeeID, Salary, AVG(Salary) over() AS AllAvgSalary
+    FROM Employee_Salary)  a
+
+SELECT EmployeeID, Salary, JobTitle
+FROM Employee_Salary
+WHERE EmployeeID in (
+    SELECT EmployeeID
+    FROM EmployeeDemographics
+    WHERE Age > 30)
